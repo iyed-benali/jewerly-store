@@ -10,6 +10,11 @@ const buyerSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  address: {
+    type: String,
+    required: true,
+    unique: false,
+  },
   orders: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order',

@@ -14,7 +14,6 @@ const addBuyer = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
-
 // Controller to get all buyers
 const getAllBuyers = async (req, res) => {
   try {
