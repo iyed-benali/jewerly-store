@@ -23,6 +23,27 @@ const getAllBuyers = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
+}
+  const placeOrder = async (req, res) => {
+    try {
+      const { buyerId, productId, quantity } = req.body;
+  
+      // Create an order
+      const order = await Order.create({ product: productId, quantity, status: 'pending' });
+  
+      // Update buyer's orders
+      const buyer = await Buyer.findByIdAndUpdate(
+        buyerId,
+        { $push: { orders: order._id } },
+        { new: true }
+      );
+  
+      res.status(201).json({ buyer, order });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
 };
 
-module.exports = { addBuyer, getAllBuyers };
+
+module.exports = { placeOrder,addBuyer, getAllBuyers };

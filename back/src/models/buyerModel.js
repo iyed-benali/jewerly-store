@@ -13,7 +13,6 @@ const buyerSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true,
-    unique: false,
   },
   orders: [{
     type: mongoose.Schema.Types.ObjectId,

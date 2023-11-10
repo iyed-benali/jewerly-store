@@ -1,9 +1,7 @@
 const express = require('express')
 const database = require('./src/config/database')
 const app = express()
-// const Buyer = require('./src/models/buyerModel')
-// const Product = require('./src/models/productModel')
-// const Order = require('./src/models/orderModel')
+
 const buyerRoutes = require('./src/routes/buyerRoute');
 const productRoutes =require('./src/routes/productRoute.js')
 const orderRoutes = require('./src/routes/orderRoute.js');
