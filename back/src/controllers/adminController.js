@@ -1,18 +1,17 @@
-const Order = require('../models/orderModel');
-const Buyer = require('../models/buyerModel');
-const Product = require('../models/productModel');
+// adminController.js
+const Admin = require('../models/adminModel');
 
-// Get all orders with buyer and product details
-exports.getAllOrdersWithDetails = async (req, res) => {
+// Controller to add a new admin
+exports.addAdmin = async (req, res) => {
   try {
-    const orders = await Order.find().populate({
-      path: 'product',
-      populate: { path: 'product' },
-    });
-
-    res.status(200).json(orders);
+    const { username, password } = req.body;
+    const newAdmin = new Admin({ username, password });
+    await newAdmin.save();
+    res.status(201).json(newAdmin);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+// Other controller methods for admins can be added here if needed
