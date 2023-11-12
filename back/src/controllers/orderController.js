@@ -3,8 +3,8 @@ const Order = require('../models/orderModel');
 // Add an order
 exports.addOrder = async (req, res) => {
   try {
-    const { product, quantity, status } = req.body;
-    const order = await Order.create({ product, quantity, status });
+    const { buyer,product, quantity, status } = req.body;
+    const order = await Order.create({ buyer,product, quantity, status });
     res.status(201).json(order);
   } catch (error) {
     console.error(error);
