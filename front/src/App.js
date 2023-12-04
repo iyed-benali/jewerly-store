@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import BuyerLogin from './buyerAuthentication/buyerLogin.jsx'
+import BuyerSignUp from './buyerAuthentication/buyerSignUp.jsx'
+import Welcome from './welcome/Welcome.jsx';
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    
+  return( 
+    <Routes>
+          <Route path="/" element={<Welcome />}  />
+          <Route path="/buyerSign" element={<BuyerSignUp />} />
+          <Route path="/buyerLogin" element={<BuyerLogin />} />
+       </Routes>
+  )
 }
 
-export default App;
+export default App

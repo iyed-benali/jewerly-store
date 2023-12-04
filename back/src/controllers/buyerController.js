@@ -2,6 +2,7 @@
 
 const Buyer = require('../models/buyerModel.js');
 
+
 // Controller to add a new buyer
 const addBuyer = async (req, res) => {
   try {

@@ -11,7 +11,6 @@ exports.addOrder = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 // Get all orders
 exports.getAllOrders = async (req, res) => {
   try {

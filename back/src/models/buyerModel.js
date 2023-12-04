@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const passportLocalMongoose = require('passport-local-mongoose');
 const buyerSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,6 +19,7 @@ const buyerSchema = new mongoose.Schema({
     ref: 'Order',
   }],
 });
+buyerSchema.plugin(passportLocalMongoose);
 
 const Buyer = mongoose.model('Buyer', buyerSchema);
 
