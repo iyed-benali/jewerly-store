@@ -9,13 +9,13 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  description: {
-    type: String,
-    required: true,
-  },
   category:{
  type :String,
  required : true
+  },
+  imageUrl : {
+    type : String,
+    required : true
   },
   orders: [{
     type: mongoose.Schema.Types.ObjectId,
