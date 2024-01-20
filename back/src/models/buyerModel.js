@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const buyerSchema = new mongoose.Schema({
+  uid: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
@@ -17,8 +22,7 @@ const buyerSchema = new mongoose.Schema({
   password : {
 type :String , 
 required : true
-  }
-  ,
+  },
   orders: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order',

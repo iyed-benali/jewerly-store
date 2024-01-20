@@ -7,8 +7,8 @@
   // Controller to add a new buyer
   const addBuyer = async (req, res) => {
     try {
-      const { name, email, address,password } = req.body;
-      const newBuyer = new Buyer({ name, email, address,password });
+      const { uid,name, email, address,password } = req.body;
+      const newBuyer = new Buyer({ uid,name, email, address,password });
       await newBuyer.save();
       res.status(201).json(newBuyer);
     } catch (error) {
@@ -58,4 +58,37 @@
         res.status(500).json({ error: 'Internal Server Error', details: error.message });
       }
   };
-  module.exports = { placeOrder,addBuyer, getAllBuyers };
+  const getBuyerById = async (req, res) => {
+    try {
+      const buyerId = req.params.buyerId;
+      const buyer = await Buyer.findById(buyerId);
+      res.status(200).json(buyer);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
+  const getOrderWithDetails = async (req, res) => {
+    try {
+      const orderId = req.params.orderId;
+  
+      // Fetch the order along with buyer and product details
+      const orderWithDetails = await Order.findById(orderId)
+        .populate('buyer', 'uid name email address') // Assuming these are the fields you want from the buyer
+        .populate('product', 'name price description category imageUrl'); // Assuming these are the fields you want from the product
+  
+      if (!orderWithDetails) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+  
+      res.status(200).json(orderWithDetails);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
+
+
+  module.exports = { getOrderWithDetails,getBuyerById,placeOrder,addBuyer, getAllBuyers };

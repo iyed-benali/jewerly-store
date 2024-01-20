@@ -12,6 +12,7 @@ router.post('/buyers', buyerController.addBuyer);
 router.get('/buyers', buyerController.getAllBuyers);
 
 router.post('/place-order', buyerController.placeOrder);
-
+router.get('/oneBuyer/:buyerId', buyerController.getBuyerById);
+router.get('/orderData/:orderId',buyerController.getOrderWithDetails)
 
 module.exports = router;

@@ -41,9 +41,11 @@ export default function Welcome() {
             <Link  className="text-sm font-semibold leading-6 text-gray-900" to={"/contact"}>contact us </Link>   
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
+            <Link to="/buyerLogin" className="text-sm font-semibold leading-6 text-gray-900">
+              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                Log in <span aria-hidden="true">&rarr;</span>
+              </a>
+              </Link>
           </div>
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>

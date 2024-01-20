@@ -51,7 +51,7 @@
             </select>
           </div>
 
-          {/* Log In */}
+        
           <a href="#" className="ml-4 text-sm font-semibold text-gray-200 hover:text-white transition duration-300">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
